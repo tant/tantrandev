@@ -21,8 +21,7 @@ const BlogSection: React.FC = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const token = process.env.HASH_NODE_TOKEN
+    async function fetchPosts() {
       const query = `{
         publication(host: "blog.tantran.dev") {
           posts(first: 3) {
@@ -39,36 +38,32 @@ const BlogSection: React.FC = () => {
             }
           }
         }
-      }`
+      }`;
       const res = await fetch('https://gql.hashnode.com/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
-      })
-      console.log('Hashnode API status:', res.status, res.statusText)
-      const data = await res.json()
-      console.log('Hashnode API response:', data)
-      const posts = data.data?.publication?.posts?.edges?.map((edge: any) => {
-        const node = edge.node
+      });
+      const data = await res.json();
+      const posts = (data.data?.publication?.posts?.edges || []).map((edge: any) => {
+        const node = edge.node;
         return {
           id: node.id,
           title: node.title,
           href: node.url,
           description: node.brief,
-          imageUrl: node.coverImage?.url || '',
+          imageUrl: node.coverImage?.url || '/t1.jpg',
           date: new Date(node.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
           datetime: node.publishedAt.split('T')[0],
           author: {
             name: node.author.name,
-            imageUrl: node.author.profilePicture,
+            imageUrl: node.author.profilePicture || '/t1.jpg',
           },
-        }
-      }) || []
-      setBlogPosts(posts)
+        };
+      });
+      setBlogPosts(posts);
     }
-    fetchPosts()
+    fetchPosts();
   }, [])
 
   return (
@@ -86,7 +81,7 @@ const BlogSection: React.FC = () => {
             className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80"
           >
             {post.imageUrl && (
-              <img alt="" src={post.imageUrl} className="absolute inset-0 -z-10 size-full object-cover" />
+              <img alt={post.title} src={post.imageUrl} className="absolute inset-0 -z-10 size-full object-cover" />
             )}
             <div className="absolute inset-0 -z-10 bg-linear-to-t from-gray-900 via-gray-900/40" />
             <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-gray-900/10 ring-inset" />
@@ -100,7 +95,7 @@ const BlogSection: React.FC = () => {
                   <circle r={1} cx={1} cy={1} />
                 </svg>
                 <div className="flex gap-x-2.5">
-                  <img alt="" src={post.author.imageUrl} className="size-6 flex-none rounded-full bg-white/10" />
+                  <img alt={post.author.name} src={post.author.imageUrl} className="size-6 flex-none rounded-full bg-white/10" />
                   {post.author.name}
                 </div>
               </div>
