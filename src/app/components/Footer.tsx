@@ -8,6 +8,8 @@ const footerNavigation = {
     { name: 'Press', href: '#' },
     { name: 'Accessibility', href: '#' },
     { name: 'Partners', href: '#' },
+    { name: 'Privacy Policy', href: '/policy' }, // Added link to Privacy Policy page
+    { name: 'Terms & Conditions', href: '/terms-and-conditions' }, // Added link to Terms & Conditions page
   ],
   social: [
     {
