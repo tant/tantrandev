@@ -3,21 +3,19 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import ContentSection from './components/ContentSection'
 import TeamSection from './components/TeamSection'
 import ValuesSection from './components/ValuesSection'
 import SocialProofSection from './components/SocialProofSection'
-import Footer from './components/Footer'
 import BlogSection from './components/BlogSection'
+import Header from './components/Header'
 
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="bg-white">
-      {/* Header */}
       <Header />
       <main className="isolate">
         {/* Hero section */}
@@ -40,9 +38,6 @@ export default function HomePage() {
           />
         </div>
       </main>
-
-      {/* Footer */}
-      <Footer />
     </div>
   )
 }

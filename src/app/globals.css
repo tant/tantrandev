@@ -56,3 +56,9 @@ body {
     background-color: color-mix(in oklab, var(--color-gray-950) 5%, transparent);
   }
 }
+
+.calendly-widget {
+  min-width: 320px;
+  height: 700px;
+  border-radius: 0.75rem;
+}

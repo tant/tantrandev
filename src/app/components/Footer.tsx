@@ -2,7 +2,8 @@ import React from 'react'
 
 const footerNavigation = {
   main: [
-    { name: 'About', href: '#' },
+    { name: 'About', href: '/about' },
+    { name: 'Playbooks', href: '/playbooks' },
     { name: 'Blog', href: '#' },
     { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
@@ -14,7 +15,7 @@ const footerNavigation = {
   social: [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/tantran',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -27,7 +28,7 @@ const footerNavigation = {
     },
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/tan.tranxn/',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -40,7 +41,7 @@ const footerNavigation = {
     },
     {
       name: 'X',
-      href: '#',
+      href: 'https://x.com/tantranxn',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
@@ -49,7 +50,7 @@ const footerNavigation = {
     },
     {
       name: 'GitHub',
-      href: '#',
+      href: 'https://github.com/tant',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -62,7 +63,7 @@ const footerNavigation = {
     },
     {
       name: 'YouTube',
-      href: '#',
+      href: 'https://www.youtube.com/@tantranpersonal',
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -95,7 +96,7 @@ const Footer: React.FC = () => (
         ))}
       </div>
       <p className="mt-10 text-center text-sm/6 text-gray-600">
-        &copy; 2024 Your Company, Inc. All rights reserved.
+        &copy; {new Date().getFullYear()} Tan Tran. All rights reserved.
       </p>
     </div>
   </footer>
