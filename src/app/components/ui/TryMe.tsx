@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { marked } from 'marked';
 
 const roles = [
   'Executive Leader',
@@ -40,7 +41,7 @@ const TryMe: React.FC = () => {
 
   return (
     <div className="mt-10 flex justify-center">
-      <div className="bg-white rounded-xl shadow p-8 w-3/4 max-w-md lg:max-w-3xl flex flex-col items-center">
+      <div className="bg-white rounded-xl shadow p-8 w-full max-w-md lg:max-w-3xl flex flex-col items-center">
         <h3 className="text-lg font-semibold text-gray-900 mb-1 text-center">Explore my strategic fit</h3>
         <p className="text-xs text-gray-500 mb-6 text-center">Powered by Gemini AI ✨</p>
         <textarea
@@ -77,11 +78,14 @@ const TryMe: React.FC = () => {
               <span>Generating...</span>
             </div>
           )}
-          {!loading && resultHtml && (
-            <div dangerouslySetInnerHTML={{ __html: resultHtml }} />
+          {!loading && result && (
+            <div
+              className="prose prose-sm w-full"
+              dangerouslySetInnerHTML={{ __html: marked(result) }}
+            />
           )}
-          {!loading && !resultHtml && result && (
-            <span className="text-red-500">{result}</span>
+          {!loading && !result && resultHtml && (
+            <span className="text-red-500">{resultHtml}</span>
           )}
         </div>
       </div>
