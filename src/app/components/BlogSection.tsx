@@ -78,7 +78,7 @@ const BlogSection: React.FC = () => {
         {blogPosts.map((post) => (
           <article
             key={post.id}
-            className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-80 pb-8 sm:pt-48 lg:pt-80"
+            className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pt-28 pb-8 sm:pt-48 lg:pt-80"
           >
             {post.imageUrl && (
               <img alt={post.title} src={post.imageUrl} className="absolute inset-0 -z-10 size-full object-cover" />
