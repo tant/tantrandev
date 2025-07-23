@@ -47,7 +47,7 @@ const TryMe: React.FC = () => {
         <textarea
           className="w-full border border-gray-300 rounded px-3 py-2 mb-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
           rows={3}
-          placeholder="Describe your company..."
+          placeholder="Describe your company, business goals, challenges, and expectations. E.g. We are a fast-growing SaaS startup in fintech, serving 500+ enterprise clients in Southeast Asia. Our main challenge is scaling our cloud infrastructure and expanding into new markets like Australia. We value innovation, reliability, and strategic partnerships."
           value={companyDesc}
           onChange={e => setCompanyDesc(e.target.value)}
         />

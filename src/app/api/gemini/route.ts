@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     '**Your Task:**',
     `Based on the executive profile provided below, write a compelling analysis outlining the strategic value this executive would bring to the partner's organization in the specific role of a **'${role}'**.`,
     '',
-    'Your analysis must be persuasive, insightful, and directly address the partner\'s context. The goal is to clearly demonstrate a powerful business case for collaboration or hiring.',
+    "Your analysis must be persuasive, insightful, and directly address the partner's context. The goal is to clearly demonstrate a powerful business case for collaboration or hiring.",
     '',
     '**Executive Profile:**',
     '---',
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     '',
     '3.  Under this section, detail **three distinct, high-impact contributions** this executive would make. For each contribution:',
     '    * Use a bolded, numbered sub-heading (e.g., **1. Driving Market Expansion and Modernization.**).',
-    '    * In a concise paragraph, explain *how* the executive\'s specific experience (from their profile) directly translates to solving the partner\'s described needs or unlocking new opportunities. Connect the dots clearly. Focus on tangible outcomes like revenue growth, operational efficiency, innovation, or risk mitigation.',
+    "    * In a concise paragraph, explain *how* the executive's specific experience (from their profile) directly translates to solving the partner's described needs or unlocking new opportunities. Connect the dots clearly. Focus on tangible outcomes like revenue growth, operational efficiency, innovation, or risk mitigation.",
     '',
     '4.  Conclude with a decisive summary statement under the heading "**Recommendation:**".',
     '',
@@ -53,6 +53,8 @@ export async function POST(req: Request) {
     '- Professional, confident, and authoritative.',
     '- Use the language of a seasoned business leader.',
     '- Avoid generic statements; make every point specific and evidence-based.',
+    '',
+    'Please respond in the same language as used in the company description above, if possible.'
   ].join('\n');
 
   // Call Gemini API
