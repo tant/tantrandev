@@ -10,18 +10,32 @@ const TryMe: React.FC = () => {
   const [companyDesc, setCompanyDesc] = useState('');
   const [role, setRole] = useState(roles[0]);
   const [result, setResult] = useState('');
+  const [resultHtml, setResultHtml] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
     setLoading(true);
     setResult('');
-    // Placeholder for AI integration
-    setTimeout(() => {
-      setResult(
-        `As a ${role}, I can help your company (${companyDesc || '...'}) achieve its goals with tailored strategies and expertise. [AI-generated response here]`
-      );
-      setLoading(false);
-    }, 1200);
+    setResultHtml('');
+    try {
+      const res = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ companyDesc, role }),
+      });
+      const data = await res.json();
+      if (data.result) {
+        setResult(data.result);
+        setResultHtml(data.html || '');
+      } else {
+        setResult(data.error || 'No response from Gemini.');
+        setResultHtml('');
+      }
+    } catch (err) {
+      setResult('Error connecting to Gemini API.');
+      setResultHtml('');
+    }
+    setLoading(false);
   };
 
   return (
@@ -56,8 +70,19 @@ const TryMe: React.FC = () => {
             {loading ? 'Generating...' : 'Generate'}
           </button>
         </div>
-        <div className="w-full min-h-[120px] max-h-48 overflow-auto text-sm text-gray-700 bg-gray-50 rounded p-3 border border-gray-100">
-          {result && <span>{result}</span>}
+        <div className="w-full min-h-[120px] max-h-48 overflow-auto text-sm text-gray-700 bg-gray-50 rounded p-3 border border-gray-100" aria-live="polite">
+          {loading && (
+            <div className="flex justify-center items-center h-full">
+              <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-600 mr-2"></span>
+              <span>Generating...</span>
+            </div>
+          )}
+          {!loading && resultHtml && (
+            <div dangerouslySetInnerHTML={{ __html: resultHtml }} />
+          )}
+          {!loading && !resultHtml && result && (
+            <span className="text-red-500">{result}</span>
+          )}
         </div>
       </div>
     </div>
