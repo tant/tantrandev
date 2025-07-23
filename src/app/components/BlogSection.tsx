@@ -52,12 +52,12 @@ const BlogSection: React.FC = () => {
           title: node.title,
           href: node.url,
           description: node.brief,
-          imageUrl: node.coverImage?.url || '/t1.jpg',
+          imageUrl: node.coverImage?.url || '/no-image.jpg',
           date: new Date(node.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
           datetime: node.publishedAt.split('T')[0],
           author: {
             name: node.author.name,
-            imageUrl: node.author.profilePicture || '/t1.jpg',
+            imageUrl: node.author.profilePicture || '/profile-pic.jpg',
           },
         };
       });
