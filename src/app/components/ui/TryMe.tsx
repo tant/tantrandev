@@ -68,7 +68,7 @@ const TryMe: React.FC = () => {
             onClick={handleGenerate}
             disabled={loading || !companyDesc}
           >
-            {loading ? 'Generating...' : 'Generate'}
+            {loading ? 'Analyzing...' : 'Analyze fit'}
           </button>
         </div>
         <div className="w-full min-h-[120px] max-h-48 overflow-auto text-sm text-gray-700 bg-gray-50 rounded p-3 border border-gray-100" aria-live="polite">
