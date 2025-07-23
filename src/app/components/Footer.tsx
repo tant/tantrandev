@@ -4,11 +4,6 @@ const footerNavigation = {
   main: [
     { name: 'About', href: '/about' },
     { name: 'Playbooks', href: '/playbooks' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Accessibility', href: '#' },
-    { name: 'Partners', href: '#' },
     { name: 'Privacy Policy', href: '/policy' }, // Added link to Privacy Policy page
     { name: 'Terms & Conditions', href: '/terms-and-conditions' }, // Added link to Terms & Conditions page
   ],
