@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react'
 import Header from '../components/Header'
+import MyDigitalTwin from '../components/ui/MyDigitalTwin';
 
 const AboutPage: React.FC = () => {
   useEffect(() => {
@@ -138,7 +139,8 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        
+        {/* Gemini AI Feature Section */}
+        <MyDigitalTwin />
       </main>
     </>
   );
