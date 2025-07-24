@@ -2,6 +2,9 @@
 import { NextResponse } from 'next/server';
 
 export async function callGemini(prompt: string, apiKey: string) {
+  if (!prompt || prompt.trim().length < 20) {
+    throw new Error('Prompt is too short or empty. Not processing request.');
+  }
   if (!apiKey) {
     throw new Error('Missing Gemini API key');
   }

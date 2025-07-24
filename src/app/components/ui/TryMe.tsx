@@ -28,13 +28,16 @@ const TryMe: React.FC = () => {
       if (data.result) {
         setResult(data.result);
         setResultHtml(data.html || '');
+      } else if (data.error) {
+        setResult('');
+        setResultHtml(data.error);
       } else {
-        setResult(data.error || 'No response from Gemini.');
-        setResultHtml('');
+        setResult('');
+        setResultHtml('No response from Gemini.');
       }
     } catch (err) {
-      setResult('Error connecting to Gemini API.');
-      setResultHtml('');
+      setResult('');
+      setResultHtml('Error connecting to Gemini API.');
     }
     setLoading(false);
   };

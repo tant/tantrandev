@@ -7,6 +7,13 @@ export async function POST(req: Request) {
   if (!apiKey) {
     return NextResponse.json({ error: 'Missing Gemini API key' }, { status: 500 });
   }
+  // Company description validation
+  if (!companyDesc || companyDesc.trim().length < 30) {
+    return NextResponse.json({ error: 'Company description is too short. Please provide more details (at least 30 characters).' }, { status: 400 });
+  }
+  if (companyDesc.length > 2000) {
+    return NextResponse.json({ error: 'Company description is too long. Please shorten it to under 2000 characters.' }, { status: 400 });
+  }
 
   // Build detailed prompt for Gemini
   const resumeSummary = [
