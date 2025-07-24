@@ -19,7 +19,7 @@ const TryMe: React.FC = () => {
     setResult('');
     setResultHtml('');
     try {
-      const res = await fetch('/api/gemini', {
+      const res = await fetch('/api/try-me', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ companyDesc, role }),

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { callGemini } from '../_utils/gemini';
 
 export async function POST(req: Request) {
   const { companyDesc, role } = await req.json();
@@ -57,51 +58,12 @@ export async function POST(req: Request) {
     'Please respond in the same language as used in the company description above, if possible.'
   ].join('\n');
 
-  // Call Gemini API
   try {
-    // Trước khi gọi Gemini, lấy danh sách model và log ra console
-    // const modelRes = await fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + process.env.GEMINI_API_KEY);
-    // const modelData = await modelRes.json();
-    // console.log('Available Gemini models:', modelData);
-  } catch (err) {
-    // console.log('Error fetching Gemini models:', err);
-  }
-
-  // Gọi Gemini với model đã chọn
-  try {
-    // console.log('Gemini API endpoint:', 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey);
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-      }),
-    });
-    // console.log('Gemini API status:', response.status, response.statusText);
-    const data = await response.json();
-    // console.log('Gemini API response:', data);
-    // Kiểm tra cấu trúc response kỹ hơn
-    let resultText = 'No response from Gemini.';
-    if (
-      data.candidates &&
-      data.candidates.length > 0 &&
-      data.candidates[0].content &&
-      data.candidates[0].content.parts &&
-      data.candidates[0].content.parts.length > 0
-    ) {
-      resultText = data.candidates[0].content.parts[0].text;
-    } else {
-      // console.error('Unexpected response structure:', data);
-    }
-
-    // Chuyển markdown bullet points sang HTML
+    const resultText = await callGemini(prompt, apiKey as string);
     let formattedHtml = resultText
       .replace(/\*\s*/g, '<li class="mb-2">')
       .replace(/(\r\n|\n|\r)/gm, '</li>') + '</li>';
     formattedHtml = `<ul class="list-disc list-inside text-gray-900">${formattedHtml}</ul>`;
-
     return NextResponse.json({ result: resultText, html: formattedHtml });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to fetch from Gemini.' }, { status: 500 });
