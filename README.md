@@ -28,6 +28,11 @@ A modern, professional personal profile website built with Next.js 15, TypeScrip
 - **Spam Protection:** Basic anti-spam/bot mechanism for all public forms.
 - **Google Analytics:** Integrated for traffic and behavior tracking.
 - **Responsive UI:** Fully responsive, accessible, and optimized for Core Web Vitals.
+- **Policy & Terms:**
+  - Transparent Privacy Policy and Terms & Conditions, accessible from the footer.
+  - These pages help protect user rights and ensure legal compliance.
+- **Cookie Consent:**
+  - Cookie consent popup will be added soon to comply with privacy regulations (coming soon).
 
 ## 🛠️ Tech Stack
 - [Next.js 15](https://nextjs.org/) (App Router, API Routes)
@@ -58,11 +63,11 @@ A modern, professional personal profile website built with Next.js 15, TypeScrip
 3. **Open** [http://localhost:3000](http://localhost:3000) to view the app.
 
 4. **Environment variables:**
-   - Sao chép file `.env.sample` thành `.env`:
+   - Copy `.env.sample` to `.env`:
      ```bash
      cp .env.sample .env
      ```
-   - Sau đó, mở file `.env` và nhập các giá trị phù hợp cho từng biến môi trường theo hướng dẫn trong file.
+   - Then open `.env` and fill in the appropriate values for each environment variable as guided in the sample file.
 
 5. **Deploy:**
    - Deploy instantly on [Vercel](https://vercel.com/new).
