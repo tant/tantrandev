@@ -7,7 +7,6 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Playbooks', href: '/playbooks' },
   { name: 'Blog', href: 'https://blog.tantran.dev' },
-  { name: 'Ask Me', href: '/ask-me' },
 ]
 
 export default function Header() {

@@ -4,7 +4,6 @@ const pages = [
   '/',
   '/about',
   '/playbooks',
-  '/ask-me',
   '/reach-me',
   '/terms-and-conditions',
   '/policy',
