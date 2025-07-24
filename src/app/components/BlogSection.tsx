@@ -18,7 +18,31 @@ import React from 'react'
 import { fetchBlogPosts } from './fetchBlogPosts'
 
 const BlogSection = async () => {
-  const blogPosts: BlogPost[] = await fetchBlogPosts()
+  let blogPosts: BlogPost[] = []
+  let error = null
+  try {
+    blogPosts = await fetchBlogPosts()
+  } catch (err) {
+    error = 'Không thể tải dữ liệu từ Hashnode. Vui lòng thử lại sau.'
+  }
+
+  if (error) {
+    return (
+      <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
+            From the blog
+          </h2>
+          <p className="mt-2 text-lg/8 text-red-600">{error}</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!blogPosts || blogPosts.length === 0) {
+    // Ẩn section nếu không có bài viết nào
+    return null
+  }
 
   return (
     <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
