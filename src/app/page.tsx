@@ -1,19 +1,14 @@
-'use client'
 
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+
+import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import ValuesSection from './components/ValuesSection'
 import SocialProofSection from './components/SocialProofSection'
 import BlogSection from './components/BlogSection'
-import Header from './components/Header'
 
 export const revalidate = 3600
 
 export default function HomePage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
   return (
     <div className="bg-white">
       <Header />

@@ -22,7 +22,7 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query }),
-    next: { revalidate: 86400 }, // Revalidate once per day
+    next: { revalidate: 43200 }, // Revalidate every 12 hours
   });
   const data = await res.json();
   const posts = (data.data?.publication?.posts?.edges || []).map((edge: any) => {
