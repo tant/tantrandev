@@ -1,12 +1,9 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-
-interface Author {
+export interface Author {
   name: string
   imageUrl: string
 }
 
-interface BlogPost {
+export interface BlogPost {
   id: string
   title: string
   href: string
@@ -17,54 +14,11 @@ interface BlogPost {
   author: Author
 }
 
-const BlogSection: React.FC = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+import React from 'react'
+import { fetchBlogPosts } from './fetchBlogPosts'
 
-  useEffect(() => {
-    async function fetchPosts() {
-      const query = `{
-        publication(host: "blog.tantran.dev") {
-          posts(first: 3) {
-            edges {
-              node {
-                id
-                title
-                brief
-                url
-                coverImage { url }
-                publishedAt
-                author { name profilePicture }
-              }
-            }
-          }
-        }
-      }`;
-      const res = await fetch('https://gql.hashnode.com/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query }),
-      });
-      const data = await res.json();
-      const posts = (data.data?.publication?.posts?.edges || []).map((edge: any) => {
-        const node = edge.node;
-        return {
-          id: node.id,
-          title: node.title,
-          href: node.url,
-          description: node.brief,
-          imageUrl: node.coverImage?.url || '/no-image.jpg',
-          date: new Date(node.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-          datetime: node.publishedAt.split('T')[0],
-          author: {
-            name: node.author.name,
-            imageUrl: node.author.profilePicture || '/profile-pic.jpg',
-          },
-        };
-      });
-      setBlogPosts(posts);
-    }
-    fetchPosts();
-  }, [])
+const BlogSection = async () => {
+  const blogPosts: BlogPost[] = await fetchBlogPosts()
 
   return (
     <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
