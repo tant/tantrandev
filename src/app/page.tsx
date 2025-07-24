@@ -9,6 +9,8 @@ import SocialProofSection from './components/SocialProofSection'
 import BlogSection from './components/BlogSection'
 import Header from './components/Header'
 
+export const revalidate = 3600
+
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
