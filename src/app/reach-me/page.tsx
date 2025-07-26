@@ -8,6 +8,11 @@ export default function ReachMePage() {
   const [contactMethod, setContactMethod] = useState("email");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -19,6 +24,72 @@ export default function ReachMePage() {
     };
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
+
+    // Prepare payload
+    const payload: any = {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      message: message.trim(),
+      contactMethod,
+      email: (contactMethod === "email" || contactMethod === "both") ? email.trim() : undefined,
+      phone: (contactMethod === "phone" || contactMethod === "both") ? phone.trim() : undefined,
+    };
+
+    // Basic input validation
+    if (!firstName || !message || !contactMethod) {
+      setError("Missing required fields.");
+      setLoading(false);
+      return;
+    }
+    if ((contactMethod === "email" || contactMethod === "both") && email) {
+      // Simple email format check
+      const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (!emailRegex.test(email)) {
+        setError("Invalid email format.");
+        setLoading(false);
+        return;
+      }
+    }
+    if ((contactMethod === "phone" || contactMethod === "both") && phone) {
+      // Simple phone format check (digits, spaces, +, -)
+      const phoneRegex = /^[\d\s\+\-]{6,20}$/;
+      if (!phoneRegex.test(phone)) {
+        setError("Invalid phone format.");
+        setLoading(false);
+        return;
+      }
+    }
+
+    try {
+      const res = await fetch("/api/brevo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSuccess("Your message has been sent successfully!");
+        setFirstName("");
+        setLastName("");
+        setMessage("");
+        setContactMethod("email");
+        setEmail("");
+        setPhone("");
+      } else {
+        setError("Failed to send message."); // Do not expose backend error details
+      }
+    } catch (err: any) {
+      setError("Failed to send message."); // Do not expose error details
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -26,7 +97,25 @@ export default function ReachMePage() {
         <div className="bg-white rounded-xl shadow p-8 w-full max-w-4xl flex flex-col lg:flex-row gap-10 lg:gap-6 h-[600px]">
           <div className="flex-1 flex flex-col justify-center min-w-[280px] h-full">
             <h1 className="text-2xl font-bold text-gray-900 text-center lg:text-left">Contact / Reach Me</h1>
-            <form className="flex flex-col gap-4 mt-4 flex-1">
+            <form className="flex flex-col gap-4 mt-4 flex-1" onSubmit={handleSubmit}>
+              <label className="font-semibold text-gray-700">First Name <span className="text-red-500">*</span></label>
+              <input
+                type="text"
+                className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+                placeholder="Your first name"
+                value={firstName}
+                onChange={e => setFirstName(e.target.value)}
+                required
+              />
+              <label className="font-semibold text-gray-700">Last Name</label>
+              <input
+                type="text"
+                className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+                placeholder="Your last name (optional)"
+                value={lastName}
+                onChange={e => setLastName(e.target.value)}
+              />
+
               <label className="font-semibold text-gray-700">Message</label>
               <textarea
                 className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
@@ -99,11 +188,14 @@ export default function ReachMePage() {
               )}
 
               <button
-                type="button"
+                type="submit"
                 className="w-full bg-blue-600 text-white rounded px-4 py-2 font-semibold hover:bg-blue-700 transition disabled:opacity-50"
+                disabled={loading}
               >
-                Send
+                {loading ? "Sending..." : "Send"}
               </button>
+              {success && <div className="text-green-600 font-semibold mt-2">{success}</div>}
+              {error && <div className="text-red-600 font-semibold mt-2">{error}</div>}
             </form>
           </div>
           <div className="relative flex-1 flex flex-col items-center gap-4 mt-8 lg:mt-0 lg:pl-8 border-t lg:border-t-0 lg:border-l border-gray-200 min-w-[320px] max-w-full h-full">
