@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@getbrevo/brevo": "file:getbrevo-brevo-2.5.0.tgz",
     "@headlessui/react": "^2.2.6",
     "@heroicons/react": "^2.2.0",
     "marked": "^16.1.1",
