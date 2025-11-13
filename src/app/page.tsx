@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection'
 import ValuesSection from './components/ValuesSection'
 import SocialProofSection from './components/SocialProofSection'
 import BlogSection from './components/BlogSection'
+import TryMe from './components/ui/TryMe'
 
 export const revalidate = 3600
 
@@ -21,6 +22,9 @@ export default function HomePage() {
 
         {/* Social proof section */}
         <SocialProofSection />
+
+        {/* Try me section */}
+        <TryMe />
 
         {/* Blog section */}
         <BlogSection />

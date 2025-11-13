@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export interface ValueContent {
   p: string;
@@ -10,9 +11,10 @@ export interface ValueCardProps {
   role?: string;
   content: ValueContent;
   cta?: string;
+  ctaLink?: string;
 }
 
-const ValueCard: React.FC<ValueCardProps> = ({ title, role, content, cta }) => (
+const ValueCard: React.FC<ValueCardProps> = ({ title, role, content, cta, ctaLink }) => (
   <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm flex flex-col h-full">
     <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
     {role && (
@@ -27,9 +29,15 @@ const ValueCard: React.FC<ValueCardProps> = ({ title, role, content, cta }) => (
       </ul>
     </div>
     {cta && cta.trim() && (
-      <button className="mt-auto inline-block rounded bg-indigo-600 px-4 py-2 text-white font-semibold hover:bg-indigo-700 transition">
-        {cta}
-      </button>
+      ctaLink ? (
+        <Link href={ctaLink} className="mt-auto inline-block rounded bg-indigo-600 px-4 py-2 text-center text-white font-semibold hover:bg-indigo-700 transition">
+          {cta}
+        </Link>
+      ) : (
+        <button className="mt-auto inline-block rounded bg-indigo-600 px-4 py-2 text-white font-semibold hover:bg-indigo-700 transition">
+          {cta}
+        </button>
+      )
     )}
   </div>
 );

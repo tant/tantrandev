@@ -15,6 +15,7 @@ const values = [
 			],
 		},
 		cta: `Let's Build Together`,
+		ctaLink: '/reach-me',
 	},
 	{
 		title: 'I Lead',
@@ -29,6 +30,7 @@ const values = [
 			],
 		},
 		cta: 'Explore My Career',
+		ctaLink: '/about',
 	},
 ]
 
