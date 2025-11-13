@@ -6,20 +6,17 @@ import { marked } from 'marked';
 const roles = [
   'Executive Leader',
   'Technology Partner',
-  'Strategic Investor',
 ];
 
 const TryMe: React.FC = () => {
   const [companyDesc, setCompanyDesc] = useState('');
   const [role, setRole] = useState(roles[0]);
   const [result, setResult] = useState('');
-  const [resultHtml, setResultHtml] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
     setLoading(true);
     setResult('');
-    setResultHtml('');
     try {
       const res = await fetch('/api/try-me', {
         method: 'POST',
@@ -29,70 +26,74 @@ const TryMe: React.FC = () => {
       const data = await res.json();
       if (data.result) {
         setResult(data.result);
-        setResultHtml(data.html || '');
       } else if (data.error) {
-        setResult('');
-        setResultHtml(data.error);
+        setResult(data.error);
       } else {
-        setResult('');
-        setResultHtml('No response from Gemini.');
+        setResult('No response from Gemini.');
       }
     } catch (err) {
-      setResult('');
-      setResultHtml('Error connecting to Gemini API.');
+      setResult('Error connecting to Gemini API.');
     }
     setLoading(false);
   };
 
   return (
-    <div id="tryme-anchor" className="tryme-section">
-      <div className="mt-10 flex justify-center">
-        <div className="bg-white rounded-xl shadow p-8 w-full max-w-md lg:max-w-3xl flex flex-col items-center">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1 text-center">Explore my strategic fit</h3>
-          <p className="text-xs text-gray-500 mb-6 text-center">Powered by Gemini AI ✨</p>
-          <textarea
-            className="w-full border border-gray-300 rounded px-3 py-2 mb-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-            rows={3}
-            placeholder="Describe your company, business goals, challenges, and expectations. E.g. We are a fast-growing SaaS startup in fintech, serving 500+ enterprise clients in Southeast Asia. Our main challenge is scaling our cloud infrastructure and expanding into new markets like Australia. We value innovation, reliability, and strategic partnerships."
-            value={companyDesc}
-            onChange={e => setCompanyDesc(e.target.value)}
-          />
-          <div className="w-full flex flex-col md:flex-row gap-3 mb-4">
-            <label htmlFor="role-select" className="sr-only">Select your role</label>
-            <select
-              id="role-select"
-              className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-              value={role}
-              onChange={e => setRole(e.target.value)}
-            >
-              {roles.map(r => (
-                <option key={r} value={r}>{r}</option>
-              ))}
-            </select>
-            <button
-              className="flex-1 min-w-[120px] bg-blue-600 text-white rounded px-4 py-2 font-semibold hover:bg-blue-700 transition disabled:opacity-50"
-              onClick={handleGenerate}
-              disabled={loading || !companyDesc}
-            >
-              {loading ? 'Analyzing...' : 'Analyze fit'}
-            </button>
-          </div>
-          <div className="w-full min-h-[120px] max-h-48 overflow-auto text-sm text-gray-700 bg-gray-50 rounded p-3 border border-gray-100" aria-live="polite">
-            {loading && (
-              <div className="flex justify-center items-center h-full">
-                <span className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-blue-600 mr-2"></span>
-                <span>Generating...</span>
+    <div id="tryme-anchor" className="bg-gray-50 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Explore My Strategic Fit</h2>
+          <p className="mt-2 text-lg leading-8 text-gray-600">
+            Discover how my expertise can align with your business goals. Powered by Gemini AI ✨
+          </p>
+        </div>
+        <div className="mt-16 rounded-xl bg-white p-8 shadow-2xl ring-1 ring-gray-900/10">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2">
+            <div>
+              <h3 className="text-xl font-semibold leading-7 text-gray-900">Describe your business</h3>
+              <div className="mt-6 flex flex-col gap-y-4">
+                <textarea
+                  rows={5}
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="e.g., We are a fast-growing SaaS startup in fintech, serving 500+ enterprise clients in Southeast Asia. Our main challenge is scaling our cloud infrastructure..."
+                  value={companyDesc}
+                  onChange={(e) => setCompanyDesc(e.target.value)}
+                />
+                <div className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-4">
+                  <select
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  >
+                    {roles.map((r) => <option key={r}>{r}</option>)}
+                  </select>
+                  <button
+                    onClick={handleGenerate}
+                    disabled={loading || !companyDesc}
+                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
+                  >
+                    {loading ? 'Analyzing...' : 'Analyze Fit'}
+                  </button>
+                </div>
               </div>
-            )}
-            {!loading && result && (
-              <div
-                className="prose prose-sm w-full"
-                dangerouslySetInnerHTML={{ __html: marked(result) }}
-              />
-            )}
-            {!loading && !result && resultHtml && (
-              <span className="text-red-500">{resultHtml}</span>
-            )}
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold leading-7 text-gray-900">Analysis Result</h3>
+              <div className="mt-6 min-h-[240px] rounded-lg bg-gray-50 p-6 ring-1 ring-inset ring-gray-200">
+                {loading ? (
+                  <div className="flex h-full items-center justify-center">
+                    <div className="flex items-center space-x-2">
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-solid border-indigo-600 border-t-transparent"></div>
+                      <p className="text-gray-500">Generating analysis...</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className="prose prose-sm max-w-none text-gray-600"
+                    dangerouslySetInnerHTML={{ __html: marked(result) }}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
