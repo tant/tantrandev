@@ -4,45 +4,31 @@ import ValueCard, { ValueContent } from './ui/ValueCard'
 const values = [
 	{
 		title: 'I Build',
-		role: 'The Hands-On Technology Partner',
+		role: 'A hands-on technology partner',
 		content: {
-			p: `I specialize in architecting and delivering robust, scalable technology solutions from the ground up. With deep, hands-on experience across the full software development lifecycle, my focus is on turning complex business requirements into high-impact products. I don't just manage projects; I build them.`,
+			p: `I specialize in architecting intelligent, data-driven solutions. My focus is on moving beyond standard applications to build systems that leverage data and AI for tangible business impact. I don't just manage projects; I build the foundational data infrastructure and machine learning models that power them.`,
 			ul: [
-				'Architected and rebuilt core products for long-term scalability and security.',
-				'Led critical technology migrations to modern frameworks like .NET.',
-				'Co-developed and launched new enterprise hardware products with client R&D teams.',
-				'Proficient in modern stacks including Next.js, Python, TypeScript, and cloud platforms like AWS, Azure, and GCP.',
+				'architected data-centric products for long-term scalability and real-time insights.',
+				'led the implementation of machine learning models for predictive analytics and personalization.',
+				'developed and deployed scalable data pipelines on cloud platforms like AWS, Azure, and GCP.',
+				'proficient in modern data stacks including Python, SQL, and big data technologies.',
 			],
 		},
 		cta: `Let's Build Together`,
 	},
 	{
 		title: 'I Lead',
-		role: 'The Executive Leader',
+		role: 'An executive leader',
 		content: {
-			p: `I have a 20-year history of building and scaling teams and businesses. My leadership philosophy is centered on creating high-performance environments and driving growth through clear strategy and P&L ownership. I thrive on taking organizations to the next level.`,
+			p: `I have a 20-year history of scaling teams and businesses by fostering a data-driven culture. My leadership philosophy is centered on empowering teams with the data and tools they need to make smarter decisions, experiment rapidly, and drive growth through clear, measurable KPIs.`,
 			ul: [
-				'Scaled a company from zero to over 100 employees and $1M+ in profitable annual revenue.',
-				'Grew a technical delivery team from 20 to 80 engineers in just 6 months.',
-				'Launched and established a new international subsidiary in the UAE, building a fully operational company from scratch in under a year.',
-				'Directed all business functions including financial planning, operations, and talent acquisition.',
+				'scaled a company to 100+ employees by focusing on data-driven growth metrics.',
+				'grew a technical delivery team from 20 to 80 engineers, instilling a culture of data-informed decision-making.',
+				'implemented and evangelized the use of data analytics and business intelligence tools across the organization.',
+				'directed all business functions with a focus on data-driven financial planning and operational efficiency.',
 			],
 		},
 		cta: 'Explore My Career',
-	},
-	{
-		title: 'I Invest',
-		role: 'The Strategic Partner & Investor',
-		content: {
-			p: `Beyond technology, I partner with founders and businesses to devise and execute winning strategies. As a founder myself, I understand what it takes to navigate the journey from an idea to a profitable venture, from authoring the business plan to expanding into global markets.`,
-			ul: [
-				'Founded a technology company and scaled it into a multi-million dollar enterprise with a self-funded model.',
-				'Devised the go-to-market strategy that penetrated the high-barrier financial services sector.',
-				'Forged strategic partnerships with industry giants like ARAMCO and ADNOC, and key government entities in Dubai.',
-				'Successfully expanded business operations into international markets including the USA, Australia, and the GCC.',
-			],
-		},
-		cta: 'Propose a Partnership',
 	},
 ]
 
@@ -50,10 +36,10 @@ const ValuesSection: React.FC = () => (
 	<div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
 		<div className="mx-auto max-w-2xl lg:mx-0">
 			<h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-				I Build. I Lead. I Invest.
+				I Build. I Lead.
 			</h2>
 		</div>
-		<div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+		<div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2">
 			{values.map((value, idx) => (
 				<ValueCard key={idx} {...value} />
 			))}

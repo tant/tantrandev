@@ -14,17 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tan Tran | Executive Leader, Technology Partner, Strategic Investor",
+  title: "Tan Tran | Technology Leader & Engineering Manager",
   description:
-    "Professional personal profile website of Tan Tran – Executive Leader, Technology Partner, Strategic Investor. Connect for senior job opportunities, freelance tech projects, strategic partnerships, and investment. Built with Next.js 15, Tailwind CSS 4, Vercel, Brevo, Google Analytics.",
+    "The personal website of Tan Tran, a technology leader and engineering manager in Ho Chi Minh City. I specialize in building high-performance teams and scaling software solutions. Connect with me for leadership roles and technology consulting opportunities.",
   keywords:
-    "Tan Tran, Executive Leader, Technology Partner, Strategic Investor, Personal Brand, Career, Leadership, Business, Investment, Freelance, Collaboration, Professional Profile, Ask Me, Reach Me, Blog, Social Proof, Opportunities, Digital Headquarters, Senior Recruiter, Potential Client, Partner, Investor, Contact, Q&A, Success Metrics, Personal Website, Professional Network, Strategic Value, Business Growth, Trusted Partner, Angel Investor, Global Expansion, P&L Ownership, Tech Expertise, High-Stakes Industry",
+    "Tan Tran, technology leader, engineering manager, software development, team leadership, technical leadership, Ho Chi Minh City",
   authors: [{ name: "Tan Tran", url: "https://tantran.dev" }],
   creator: "Tan Tran",
   openGraph: {
-    title: "Tan Tran | Executive Leader, Technology Partner, Strategic Investor",
+    title: "Tan Tran | Technology Leader & Engineering Manager",
     description:
-      "Professional personal profile website of Tan Tran – Executive Leader, Technology Partner, Strategic Investor. Connect for senior job opportunities, freelance tech projects, strategic partnerships, and investment.",
+      "The personal website of Tan Tran, a technology leader and engineering manager in Ho Chi Minh City. I specialize in building high-performance teams and scaling software solutions.",
     url: "https://tantran.dev",
     siteName: "Tan Tran Dev",
     images: [
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tan Tran | Executive Leader, Technology Partner, Strategic Investor",
+    title: "Tan Tran | Technology Leader & Engineering Manager",
     description:
-      "Professional personal profile website of Tan Tran – Executive Leader, Technology Partner, Strategic Investor.",
+      "The personal website of Tan Tran, a technology leader and engineering manager in Ho Chi Minh City.",
     images: ["https://tantran.dev/logo.png"],
     creator: "@tantran_dev",
   },
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  category: "Personal Profile, Technology, Leadership, Investment",
+  category: "Technology, Leadership, Software Development",
 };
 
 export default function RootLayout({

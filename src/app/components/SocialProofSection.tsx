@@ -1,6 +1,23 @@
 import React from 'react'
-import LogoCloud from './ui/LogoCloud'
-import TryMe from './ui/TryMe'
+
+const highlights = [
+  {
+    title: 'Founded and scaled a profitable company',
+    description: 'From the ground up, built and scaled a technology company to 100+ employees and over $1M in profitable annual revenue, using a data-driven approach to market entry and growth.',
+  },
+  {
+    title: 'Led hyper-growth team expansion',
+    description: 'To meet surging client demand, quadrupled the technical delivery team from 20 to 80 engineers in just six months, establishing a data-informed culture to maintain quality at scale.',
+  },
+  {
+    title: 'Launched a new international subsidiary',
+    description: 'Established a fully operational company in the UAE from scratch in under a year, navigating all legal, financial, and operational complexities with a focus on data-driven decision making.',
+  },
+  {
+    title: 'Architected data-centric platforms',
+    description: 'Led the re-architecting of critical products, transforming them into data-centric platforms that enabled real-time analytics and machine learning capabilities.',
+  },
+]
 
 const SocialProofSection: React.FC = () => (
   <div className="relative isolate -z-10 mt-32 sm:mt-48">
@@ -26,33 +43,21 @@ const SocialProofSection: React.FC = () => (
       </svg>
     </div>
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
-      <h2 className="text-center text-lg/8 font-semibold text-gray-900">
-        Trusted Partnerships, Proven Results
+      <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        Highlights from my career
       </h2>
-      <p className="mt-4 text-center text-base text-gray-600 max-w-2xl mx-auto">
-        My work is validated by industry leaders and recognized for delivering tangible outcomes. Explore my potential strategic value below.
+      <p className="mt-4 text-center text-lg text-gray-600 max-w-2xl mx-auto">
+        Here are a few highlights from my career that demonstrate my commitment to building, leading, and delivering results.
       </p>
 
-      <LogoCloud />
-
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* FeaturedIn Card */}
-        <div className="rounded-xl bg-white shadow p-6 flex flex-col items-start">
-          <h3 className="text-base font-semibold text-gray-800 mb-2 text-left">Featured In</h3>
-          <p className="text-sm text-gray-600 mb-4 text-left">
-            "Mr. Tan is proud that his company quickly applies new technologies and adapts to meet demanding client needs, earning trust from major partners." 
-            <br/><a href="https://phumyhungngaynay.com/en/residents/find-the-balance-between-work-living-environment-family/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline ml-1">Read full article</a>
-          </p>
-        </div>
-        {/* Achievement Highlight Card */}
-        <div className="rounded-xl bg-white shadow p-6 flex flex-col items-start">
-          <h3 className="text-base font-semibold text-gray-800 mb-2 text-left">Achievement Highlight</h3>
-          <p className="text-sm text-gray-600 mb-4 text-left">Received for revitalizing a critical project 30% behind schedule and delivering with zero post-launch bugs.</p>
-        </div>
+      <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4 lg:gap-8">
+        {highlights.map((highlight) => (
+          <div key={highlight.title} className="flex flex-col rounded-2xl bg-white p-8 shadow-xl">
+            <h3 className="text-lg font-semibold leading-7 text-gray-900">{highlight.title}</h3>
+            <p className="mt-4 flex-auto text-base leading-7 text-gray-600">{highlight.description}</p>
+          </div>
+        ))}
       </div>
-
-      {/* TryMe call-to-action */}
-      <TryMe />
     </div>
   </div>
 )

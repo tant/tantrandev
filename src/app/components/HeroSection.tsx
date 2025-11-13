@@ -40,18 +40,15 @@ export default function HeroSection() {
         <div className="mx-auto max-w-7xl px-6 pt-36 pb-32 sm:pt-60 lg:px-8 lg:pt-32">
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-                Architecting Technology. <br />Engineering Growth.
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                Technology Leader & Engineering Manager
               </h1>
+              <p className="mt-6 text-lg leading-8 text-gray-600">
+                Building with Data. Engineering Growth.
+              </p>
               <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none">
-                I'm Tân, a Ho Chi Minh City-based technology leader and co-founder. My primary focus is
-                engineering digital solutions that empower businesses to scale. As a co-founder,
-                I've guided our company in developing high-impact web and mobile applications,
-                transforming client operations from concept to launch. Beyond my core role, I act
-                as a strategic partner and angel investor for emerging commercial ventures, helping
-                them navigate the path from product development to successful market entry.
-                <br />This website showcases that unique blend of hands-on technical execution and
-                strategic business acumen.
+                I'm Tân, a Ho Chi Minh City-based technology leader specializing in transforming businesses with data-driven strategies and AI-powered solutions. My focus is on moving beyond traditional software to build intelligent systems that unlock new efficiencies and create measurable value. Whether it's architecting scalable data pipelines, implementing machine learning models, or guiding teams to make data-informed decisions, my goal is to deliver not just code, but quantifiable business outcomes.
+                <br />This website showcases that unique blend of hands-on technical execution and strategic, data-first thinking.
               </p>
               <div className="mt-8">
                 <HeroCTA />

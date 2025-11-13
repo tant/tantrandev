@@ -1,52 +1,46 @@
 # Personal Brand Platform – tantrandev
 
-A modern, professional personal profile website built with Next.js 15, TypeScript, and Tailwind CSS 4. The platform is designed to unify your online presence, showcase your expertise in three key roles (leader, tech partner, investor), and create effective channels for new career, freelance, and partnership opportunities.
+A modern, professional personal profile website built with Next.js 15, TypeScript, and Tailwind CSS 4. The platform is designed to unify your online presence, showcase your expertise as a Technology Leader and Engineering Manager, and create effective channels for new career and consulting opportunities.
 
 ## 🚀 Project Goals
-- Build a reputable online personal brand to attract senior job opportunities.
-- Create an effective channel for finding freelance tech projects.
-- Establish a digital headquarters for strategic partnerships and investments.
+- Build a reputable online personal brand to attract senior leadership and executive roles.
+- Create an effective channel for finding high-value freelance and consulting projects.
+- Establish a digital headquarters for your professional identity.
 
 ## ✨ Key Features
 - **Home Page:**
-  - Hero section: Personal introduction, philosophy, and profile image.
-  - Values section: Three role cards (“I Build”, “I Lead”, “I Invest”) with detailed descriptions and CTAs.
-  - Social proof: Partner logos, press quotes, achievement highlights, and call-to-action.
-  - Blog section: Displays 3 latest posts from [blog.tantran.dev](https://blog.tantran.dev) with image, title, excerpt, author, and date.
-  - Decorative image: Large, beautiful illustration at the bottom of the page.
+  - Hero section with a clear value proposition for a technology leader.
+  - Values section focusing on two core pillars: “I Build” and “I Lead”.
+  - Career Highlights section showcasing key achievements and business impact.
+  - Blog section displaying the 3 latest posts from an external blog.
 - **About Page:**
-  - Hero section: Personal story and leadership philosophy.
-  - My Journey Timeline: Visual timeline of career milestones (Builder, Leader, Global Strategist).
-  - Philosophy: Leadership and growth mindset, building sustainable value.
-  - Personal side: Images and story about Ironman/triathlon as a metaphor for business.
-  - Gemini AI (MyDigitalTwin): AI-powered Q&A about the profile and journey.
-- **Blog:** Blog link in the main navigation leads directly to [blog.tantran.dev](https://blog.tantran.dev) (hosted on Hashnode).
+  - A compelling narrative of your career journey from builder to global strategist.
+  - A visual timeline of key career milestones.
+  - A section on leadership philosophy and personal interests.
+- **Case Studies:** (Planned)
+  - A dedicated section to feature in-depth stories of your most impactful projects.
+- **Playbooks:**
+  - A section for sharing practical guides and strategies on technology and leadership.
 - **Reach Me:**
-  - Contact form with message, email/phone options, and preferred contact method.
-  - Instantly schedule a meeting via integrated Calendly widget.
-- **Playbooks:** (TBD) – This section is planned for future development.
-- **Spam Protection:** Basic anti-spam/bot mechanism for all public forms.
-- **Google Analytics:** Integrated for traffic and behavior tracking.
-- **Responsive UI:** Fully responsive, accessible, and optimized for Core Web Vitals.
-- **Policy & Terms:**
-  - Transparent Privacy Policy and Terms & Conditions, accessible from the footer.
-  - These pages help protect user rights and ensure legal compliance.
-- **Cookie Consent:**
-  - Cookie consent popup will be added soon to comply with privacy regulations (coming soon).
+  - A redesigned contact page with two clear options: a streamlined contact form or a direct meeting booking via Cal.com.
+- **SEO & Performance:**
+  - Dynamically generated `sitemap.xml` and a `robots.txt` file.
+  - On-page SEO optimizations for key pages.
+  - Fully responsive, accessible, and optimized for Core Web Vitals.
 
 ## 🛠️ Tech Stack
-- [Next.js 15](https://nextjs.org/) (App Router, API Routes)
+- [Next.js 16.0.2](https://nextjs.org/) (App Router, API Routes)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS 4](https://tailwindcss.com/)
 - [Vercel](https://vercel.com/) (hosting & serverless functions)
 - [Brevo](https://www.brevo.com/) (email service)
+- [Cal.com](https://cal.com/) (scheduling)
 - [Hashnode API](https://hashnode.com/) (blog integration)
 - Google Analytics
 
 ## 👤 Target Users
-- **Senior Recruiters/Headhunters**: Quickly validate leadership and impact.
-- **Potential Clients**: Assess technical breadth and reliability for projects.
-- **Partners/Investors**: Evaluate strategic fit and business-technical mindset.
+- **Senior Recruiters/Headhunters**: To quickly validate leadership skills and career impact.
+- **Potential Clients/Hiring Managers**: To assess technical depth, strategic thinking, and reliability for projects and roles.
 
 ## 📝 Getting Started
 
@@ -63,37 +57,35 @@ A modern, professional personal profile website built with Next.js 15, TypeScrip
 3. **Open** [http://localhost:3000](http://localhost:3000) to view the app.
 
 4. **Environment variables:**
-   - Copy `.env.sample` to `.env`:
-     ```bash
-     cp .env.sample .env
-     ```
-   - Then open `.env` and fill in the appropriate values for each environment variable as guided in the sample file.
+   - Copy `.env.sample` to `.env` and fill in the required values.
 
-5. **Deploy:**
-   - Deploy instantly on [Vercel](https://vercel.com/new).
+## 🗺️ Roadmap
 
-## 🗺️ Roadmap (MVP)
-- [x] Project setup: Next.js 15, TypeScript, Tailwind CSS 4
-- [x] Common layout & navigation (Home, Blog, About, Reach Me, Playbooks)
-- [x] Static Home structure with all sections
-- [x] About page: timeline, philosophy, AI Q&A
-- [x] Reach Me contact form (Brevo integration) and Calendly widget
-- [x] Latest blog posts from Hashnode
-- [x] Blog navigation link
-- [x] Playbooks section (TBD)
-- [x] Google Analytics integration
-- [x] Responsive, accessible, and optimized UI
+This project follows a phased development roadmap.
 
-## 📈 Success Metrics
-- Number of successful "Reach Me" form submissions
-- Click-through rates on "3 Roles" CTAs
-- Bounce rate on homepage
+### Phase 1: Content & Authority Building (Highest Priority)
+- **Goal:** Establish the website as a valuable resource that proves expertise.
+- **Tasks:**
+  - `[ ]` Develop and publish the first in-depth Case Study.
+  - `[ ]` Write and publish the first practical Playbook.
+
+### Phase 2: Enhancing Credibility & Personal Connection
+- **Goal:** Add powerful social proof and a human element to build deeper trust.
+- **Tasks:**
+  - `[ ]` Implement a "Testimonials" section with quotes from colleagues and clients.
+  - `[ ]` Add a personal introductory video to the "About" page.
+
+### Phase 3: Long-Term Growth & Promotion
+- **Goal:** Expand the website's reach and continuously reinforce the personal brand.
+- **Tasks:**
+  - `[ ]` Expand the content library with more case studies and playbooks.
+  - `[ ]` Develop and execute a content promotion strategy, primarily via LinkedIn.
 
 ## 🤝 Contributing
 Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 ## 📬 Contact
-For questions, feedback, or partnership opportunities, use the "Reach Me" form on the homepage or email: [me@tantran.dev](mailto:me@tantran.dev)
+For questions or feedback, use the "Reach Me" form on the website or email: [me@tantran.dev](mailto:me@tantran.dev)
 
 ---
 

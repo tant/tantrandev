@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import MyDigitalTwin from '../components/ui/MyDigitalTwin';
 
+import Breadcrumbs from '../components/Breadcrumbs';
+
 const AboutPage: React.FC = () => {
   useEffect(() => {
     // --- Intersection Observer for reveal animations ---
@@ -29,16 +31,22 @@ const AboutPage: React.FC = () => {
     <>
       <Header />
       <main className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14 ">
+        <div className="mx-auto max-w-7xl px-6 py-8 sm:py-16 lg:px-8">
+          <Breadcrumbs crumbs={[{ label: 'Home', href: '/' }, { label: 'About', href: '/about' }]} />
+        </div>
         <div
           aria-hidden="true"
           className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
         />
         {/* section hero */}
         <section className="mx-auto max-w-7xl px-6 py-8 sm:py-16 lg:px-8">
-          <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl mb-10 text-left w-full">
-            I don't just build software. I build businesses, teams, and opportunities.
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            About Tan Tran
           </h1>
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+          <p className="mt-6 text-2xl leading-8 text-gray-700">
+            I don't just build software. I build businesses, teams, and opportunities.
+          </p>
+          <div className="mt-10 flex flex-col lg:flex-row items-center gap-16">
             <div className="flex-1 flex flex-col h-full justify-end items-start">
               <p className="text-lg font-medium text-pretty text-gray-500 sm:text-xl/8 mb-0">
                 Welcome.<br/> 
@@ -48,7 +56,7 @@ const AboutPage: React.FC = () => {
             </div>
             <div className="flex-1 flex justify-center">
               <img
-                alt="About"
+                alt="A portrait of Tan Tran, a technology leader and engineering manager."
                 src="https://images.unsplash.com/photo-1567532900872-f4e906cbf06a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80"
                 className="aspect-6/5 w-full max-w-lg rounded-2xl object-cover"
               />
@@ -71,7 +79,7 @@ const AboutPage: React.FC = () => {
                   <p className="text-indigo-600 font-semibold">2002 - 2013</p>
                   <h3 className="text-3xl font-bold mt-1">The Builder at Heart</h3>
                   <p className="mt-4 text-gray-600">
-                    My career began with a deep passion for creation. At companies like TMA Solutions and S3 Solution, I built my foundation, not just writing code in C/C++/Python, but architecting solutions for global tech giants like Nortel Networks, Alteon and Ruckus Wireless. This was where I learned that robust technology is the bedrock of any great business.
+                    My career began with a deep passion for creation. At companies like TMA Solutions and S3 Solution, I built my foundation not just by writing code, but by architecting data-intensive, high-performance network solutions for global tech giants like Nortel Networks, Alteon, and Ruckus Wireless. This was where I learned that a robust data architecture is the bedrock of any great business.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 mt-8 md:mt-0"></div>
@@ -83,7 +91,7 @@ const AboutPage: React.FC = () => {
                   <p className="text-indigo-600 font-semibold">2016 - 2024</p>
                   <h3 className="text-3xl font-bold mt-1">From Code to People</h3>
                   <p className="mt-4 text-gray-600">
-                    Founding Carptech Corp was my pivotal transition. I realized that to scale a product, you must first scale people and processes. I went from building software to building a 100+ employee company, navigating everything from P&L management to leading the team through the COVID-19 crisis. I learned that true leadership is about enabling others to succeed.
+                    Founding Carptech Corp was my pivotal transition. I realized that to scale a product, you must first scale people and processes with a data-driven mindset. I went from building software to building a 100+ employee company, using data to inform everything from P&L management to strategic decision-making during the COVID-19 crisis. I learned that true leadership is about enabling others to succeed with clear, measurable insights.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 mt-8 md:mt-0"></div>
@@ -95,7 +103,7 @@ const AboutPage: React.FC = () => {
                   <p className="text-indigo-600 font-semibold">2024 - Present</p>
                   <h3 className="text-3xl font-bold mt-1">The Global Strategist</h3>
                   <p className="mt-4 text-gray-600">
-                    My recent roles at VNG and Titan Technology were about taking that leadership to a global scale—launching a subsidiary in the UAE, forging partnerships with giants like ARAMCO, and operating across complex international markets. Today, at WitData, I synthesize all these experiences to help businesses leverage data for digital transformation. I don't just manage; I create markets.
+                    My recent roles at VNG and Titan Technology were about taking that leadership to a global scale. Today, at WitData, I synthesize all these experiences to help businesses leverage data and AI for digital transformation. I don't just manage; I build data-driven strategies that create new markets.
                   </p>
                 </div>
                 <div className="w-full md:w-1/2 mt-8 md:mt-0"></div>
