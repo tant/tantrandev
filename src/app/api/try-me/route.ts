@@ -1,7 +1,18 @@
 import { NextResponse } from 'next/server';
 import { callGemini } from '../_utils/gemini';
+import { checkRateLimit, getClientIP, rateLimitResponse } from '../_utils/rateLimit';
+
+// Rate limit: 10 requests per minute per IP
+const RATE_LIMIT_CONFIG = { windowMs: 60 * 1000, maxRequests: 10 };
 
 export async function POST(req: Request) {
+  // Rate limiting
+  const clientIP = getClientIP(req);
+  const rateLimitResult = checkRateLimit(`try-me:${clientIP}`, RATE_LIMIT_CONFIG);
+  if (!rateLimitResult.allowed) {
+    return rateLimitResponse(rateLimitResult.resetTime);
+  }
+
   const { companyDesc, role } = await req.json();
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {

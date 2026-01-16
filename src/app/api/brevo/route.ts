@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit, getClientIP, rateLimitResponse } from '../_utils/rateLimit';
 
-// This API route will handle sending email and updating contact using Brevo (Sendinblue).
-// Implementation to be added.
+// Rate limit: 5 requests per minute per IP (stricter for email sending)
+const RATE_LIMIT_CONFIG = { windowMs: 60 * 1000, maxRequests: 5 };
 
 
 // Helper function to create or update a contact in Brevo
@@ -40,6 +41,13 @@ async function createOrUpdateBrevoContact({ email, attributes, listIds = [] }: {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate limiting
+  const clientIP = getClientIP(req);
+  const rateLimitResult = checkRateLimit(`brevo:${clientIP}`, RATE_LIMIT_CONFIG);
+  if (!rateLimitResult.allowed) {
+    return rateLimitResponse(rateLimitResult.resetTime);
+  }
+
   try {
     const body = await req.json();
     const { firstName, lastName, message, contactMethod, email, phone } = body;
@@ -50,8 +58,12 @@ export async function POST(req: NextRequest) {
     }
 
     const brevoApiKey = process.env.BREVO_API_KEY;
+    const adminEmail = process.env.ADMIN_EMAIL;
     if (!brevoApiKey) {
       return NextResponse.json({ error: 'Missing Brevo API key' }, { status: 500 });
+    }
+    if (!adminEmail) {
+      return NextResponse.json({ error: 'Missing admin email configuration' }, { status: 500 });
     }
 
     // Build beautiful thank you email for customer
@@ -113,7 +125,7 @@ export async function POST(req: NextRequest) {
           },
           to: [
             {
-              email: 'txntan@gmail.com',
+              email: adminEmail,
               name: 'Tan Tran',
             },
           ],
@@ -177,7 +189,7 @@ export async function POST(req: NextRequest) {
       },
       to: [
         {
-          email: 'txntan@gmail.com',
+          email: adminEmail,
           name: 'Tan Tran',
         },
       ],

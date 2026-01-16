@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { marked } from 'marked';
+import ReactMarkdown from 'react-markdown';
 
 const roles = [
   'Executive Leader',
@@ -87,10 +87,9 @@ const TryMe: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div
-                    className="prose prose-sm max-w-none text-gray-600"
-                    dangerouslySetInnerHTML={{ __html: marked(result) }}
-                  />
+                  <div className="prose prose-sm max-w-none text-gray-600">
+                    <ReactMarkdown>{result}</ReactMarkdown>
+                  </div>
                 )}
               </div>
             </div>
